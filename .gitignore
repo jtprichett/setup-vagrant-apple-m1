@@ -1,3 +1,4 @@
 vb_macos.dmg
 Vagrantfile
 .vagrant*
+.setup.sh.swp

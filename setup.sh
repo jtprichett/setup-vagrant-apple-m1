@@ -1,11 +1,20 @@
 #!/usr/bin/env bash
 
-curl  https://download.virtualbox.org/virtualbox/7.0.6/VirtualBox-7.0.6_BETA4-155176-macOSArm64.dmg -o vb_macos.dmg
-hdiutil mount vb_macos.dmg
-sudo installer -package "/Volumes/VirtualBox/VirtualBox.pkg" -target "/Volumes/Macintosh HD"
-hdiutil unmount "/Volumes/VirtualBox/"
-brew install vagrant vagrant-manager
-vagrant init hashicorp/precise64
+set -e
+
+/usr/sbin/softwareupdate --install-rosetta --agree
+
+if [ ! "$(command -v vmrun)" ]; then
+  brew install vmware-fusion
+fi
+
+open /Applications/VMware\ Fusion.app
+read -p "Press Enter to continue after you've configured VMware Fusion."
+
+brew install vagrant vagrant-manager vagrant-vmware-utility
+vagrant plugin install vagrant-vmware-desktop
+
 vagrant up
-vagrant ssh
+vagrant ssh-config > vagrant-ssh
+ssh -F vagrant-ssh default
 vagrant destroy
