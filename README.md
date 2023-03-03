@@ -1,4 +1,4 @@
-#### Setup VirtualBox & Vagrant for MacOS M1 Chip
+# Vagrant & VMware Fusion Setup Apple M1 Pro Chip
 
 
 1. Run ./setup.sh
@@ -6,7 +6,7 @@
 1. Once SSH is successful into Ubuntu VM, then type exit
 1. Type y to destroy machine
 
-#### Setting up VMware Fusion
+## Setting up VMware Fusion
 
 The VMware Fusion application will load after running the setup script, go ahead and follow these steps:
 1. Click Get a Free Liscense Key
